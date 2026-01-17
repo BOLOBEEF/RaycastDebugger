@@ -64,7 +64,7 @@ Default Color Behavior
 
     • If the color parameter is not set, it defaults to ```Color.white```.
     • Explicit colors **always override** the convention.
-
+<br><br>
 ### Example usage with defaults:
 ```
 RaycastDebugger.DebugRaycast(origin, dir, length);
@@ -73,14 +73,14 @@ RaycastDebugger.DebugRaycast(origin, dir, length);
 // Example usage with explicit color:
 RaycastDebugger.DebugRaycast(origin, dir, hit.distance, Color.red);
 ```
-
+<br><br>
 ### Design Goals
     • Simple to use
     • Minimal allocations
     • Familiar Unity API feel
     • Clear visual feedback
 
-
+<br><br>
 ### Shipping and Final Builds
 It is not recommended to ship this script with your final build.
 The script will automatically **self-destruct** if not running in the Unity Editor, preventing unnecessary runtime overhead.
