@@ -13,7 +13,7 @@ The entire Utility is a **single script** ```RaycastDebugger.cs```, to be easy t
 <br><br><br>
 
 ### Showcase
-[![Watch the video](https://img.youtube.com/vi/FFBhl0hzOjc/0.jpg)](https://youtu.be/FFBhl0hzOjc)
+[Watch the demo video](https://youtu.be/FFBhl0hzOjc)
 <br><br>
 
 ## Supported Physics Queries
