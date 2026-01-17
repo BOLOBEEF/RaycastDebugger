@@ -65,6 +65,7 @@ Default Color Behavior
     • If the color parameter is not set, it defaults to ```Color.white```.
     • Explicit colors **always override** the convention.
 <br>
+
 ### Example usage with defaults:
 ```
 RaycastDebugger.DebugRaycast(origin, dir, length);
