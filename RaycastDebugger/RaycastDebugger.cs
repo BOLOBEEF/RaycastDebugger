@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public static class RaycastDebugger
@@ -15,9 +16,6 @@ public static class RaycastDebugger
 
         public RaycastInfo(Vector3 position, Vector3 direction, float distance, Color color)
         {
-            // self destruct if shipped as a build
-            if (!Application.isEditor) return;
-
             // always ensure that the runner is active
             EnsureRunner();
 
@@ -64,17 +62,22 @@ public static class RaycastDebugger
 
 
     // raycasts
+
+    [Conditional("UNITY_EDITOR")]
     public static void DebugRaycast(Vector3 position, Vector3 direction, float distance, Color color = default)
     {
         raycastInfos.Add(new RaycastInfo(position, direction, distance, color == default ? Color.white : color));
     }
 
+    [Conditional("UNITY_EDITOR")]
     public static void DebugRaycast(Ray ray, float distance, Color color = default)
     {
         raycastInfos.Add(new RaycastInfo(ray.origin, ray.direction, distance, color == default ? Color.white : color));
     }
 
     // Box, Sphere, Capsule casts
+
+    [Conditional("UNITY_EDITOR")]
     public static void DebugBoxCast(Vector3 position, Vector3 halfExtents, Vector3 direction, Quaternion orientation, float distance, Collider collider = null, Color color = default)
     {
         raycastInfos.Add(new BoxCastInfo(position, halfExtents, direction, orientation, distance, color == default ? Color.white : color));
@@ -82,6 +85,8 @@ public static class RaycastDebugger
         if (collider != null)
             DebugColliders(position + direction * distance, sphereRadius: 0.2f, collider);
     }
+
+    [Conditional("UNITY_EDITOR")]
     public static void DebugSphereCast(Vector3 position, float radius, Vector3 direction, float distance, Collider collider = null, Color color = default)
     {
         raycastInfos.Add(new SphereCastInfo(position, radius, direction, distance, color == default ? Color.white : color));
@@ -89,6 +94,8 @@ public static class RaycastDebugger
         if (collider != null)
             DebugColliders(position + direction * distance, sphereRadius: 0.2f, collider);
     }
+
+    [Conditional("UNITY_EDITOR")]
     public static void DebugCapsuleCast(Vector3 point0, Vector3 point1, float radius, Vector3 direction, float distance, Collider collider = null, Color color = default)
     {
         raycastInfos.Add(new CapsuleCastInfo(point0, point1, radius, direction, distance, color == default ? Color.white : color));
@@ -98,16 +105,22 @@ public static class RaycastDebugger
     }
 
     // Overlap Box, Spher, Capsule
+
+    [Conditional("UNITY_EDITOR")]
     public static void DebugOverlapBox(Vector3 position, Vector3 halfExtents, Quaternion orientation, Collider[] colliders, Color color = default)
     {
         raycastInfos.Add(new BoxCastInfo(position, halfExtents, Vector3.zero, orientation, 0f, color == default ? Color.white : color));
         DebugColliders(position, sphereRadius: 0.2f, colliders);
     }
+
+    [Conditional("UNITY_EDITOR")]
     public static void DebugOverlapSphere(Vector3 position, float radius, Collider[] colliders, Color color = default)
     {
         raycastInfos.Add(new SphereCastInfo(position, radius, Vector3.zero, 0f, color == default ? Color.white : color));
         DebugColliders(position, sphereRadius: 0.2f, colliders);
     }
+
+    [Conditional("UNITY_EDITOR")]
     public static void DebugOverlapCapsule(Vector3 point0, Vector3 point1, float radius, Collider[] colliders, Color color = default)
     {
         raycastInfos.Add(new CapsuleCastInfo(point0, point1, radius, Vector3.zero, 0f, color == default ? Color.white : color));
@@ -196,13 +209,6 @@ public static class RaycastDebugger
     // draw gizmos which is automatically called by the runner GameObject
     public static void DrawGizmos()
     {
-        // self destruct if shipped as a build 
-        if (!Application.isEditor)
-        {
-            raycastInfos.Clear();
-            return;
-        }
-
         for (int i = raycastInfos.Count - 1; i >= 0; i--)
         {
             // draw raycast with color
