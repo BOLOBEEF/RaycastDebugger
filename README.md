@@ -83,6 +83,7 @@ The script will automatically **self-destruct** if not running in the Unity Edit
 
 ### Status
 ✅ All common Physics casts & overlaps covered
+
 ✅ Easy to use — add a single line to your code
 <br><br>
 
