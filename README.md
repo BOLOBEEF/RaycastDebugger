@@ -84,7 +84,7 @@ RaycastDebugger.DebugRaycast(origin, dir, hit.distance, Color.red);
 <br><br>
 ### Shipping and Final Builds
 It is not recommended to ship this script with your final build.
-The script will automatically **self-destruct** if not running in the Unity Editor, preventing unnecessary runtime overhead.
+The script will not compile (safely) if not running in the Unity Editor, preventing unnecessary runtime overhead.
 
 ### Status
 ✅ All common Physics casts & overlaps covered
