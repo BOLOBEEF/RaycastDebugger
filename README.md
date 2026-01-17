@@ -5,7 +5,11 @@ It mirrors Unity’s built-in ```Physics.*Cast``` and ```Physics.Overlap*``` API
 
 Usage is as simple as adding a **single line** to your code.
 
-The entire Utility is a **single script** ```RaycastDebugger.cs```, to be easy to add to you projects and extremely lightweight. 
+The entire Utility is a **single script** ```RaycastDebugger.cs```, to be easy to add to you projects and extremely lightweight.
+
+- Intended for use with **Unity 2019 LTS+**
+- Not officially tested across all Unity versions
+- Community feedback and PRs are welcome
 <br><br><br>
 
 ## Supported Physics Queries
